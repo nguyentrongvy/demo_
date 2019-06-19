@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css.css">
+</head>
+<body>
+    <div class="my-rating-1 rating" attr-data="1"></div>
+    <div class="my-rating-2 rating" attr-data="2"></div>
+    <div class="my-rating-3 rating" attr-data="3"></div>
+
+    <script src="jquery.js"></script>
+    <script src="js.js"></script>
+    <script>
+        // console.log(('.rating').attr('attr-data'));
+        let a = [1, 2, 3]
+
+        for(let i = 1; i<=a.length; i++) {
+            $(".my-rating-"+i).starRating({
+                initialRating: i,
+                starSize: 25,
+                callback: function(currentRating, $el){
+                    // make a server call here
+                }
+            });
+        }
+                
+    </script>
+</body>
+</html>

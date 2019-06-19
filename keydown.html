@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .selected {
+            background: red;
+        }
+
+        .highlight {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" class="input" />
+
+    <div class="list">
+        <!-- <div>aaaa</div>
+        <div>aaaa</div>
+        <div>aaaa</div>
+        <div>aaaa</div> -->
+    </div>
+
+    <script src="jquery.js"></script>
+
+    <script>
+        var c;
+        $('.input').on('keyup', function(e) {
+            if(e.keyCode == 65) {
+                let html = `
+                <div class="item">nhà hàng</div>
+                <div class="item">bia hơi hà nội Nhà hàng</div>
+                <div class="item">quán nhậu lão đại</div>
+                <div class="item">phan châu trinh</div>
+            `;
+
+                
+
+
+            $('.list').html(html);
+            c = $('.input').val();
+            }
+
+            // console.log($('.item').length);
+            // console.log($('.item').text());
+
+            let item = $('.item');
+
+            // console.log('item',item);
+
+            // for(let i = 0; i < $('.item').length ; i++) {
+            //     // $('.item').each(function(){
+            //     // console.log(item[i].innerText);
+
+            //     let stringConvert = change_alias(item[i].innerText);
+            //     console.log('stringConvert', stringConvert);
+            //     let findString = 'nha hang'
+            //     let start = stringConvert.indexOf(findString);
+            //     let end = start + findString.length;
+
+            //     item[i].innerText.substring(start, end);
+
+            //     console.log('item[i].innerText.substring(start, end);', item[i].innerText.substring(start, end));
+
+            //     console.log('$(this).html(', item[i].outerHTML);
+
+            //     // item[i].outerHTML(stringConvert.replace(item[i].innerText.substring(start, end), "<span class = 'highlight'>"+item[i].innerText.substring(start, end)+"</span>"));
+            // }
+
+            
+            highlight($('.item'), 'hà nộ');
+
+
+            // $('.item').each(function(item) {
+
+            //     let stringConvert = change_alias($(this).html());
+            //     let findString = 'quán ';
+
+            //     findString = change_alias(findString);
+
+            //     let start = stringConvert.indexOf(findString);
+            //     let end = start + findString.length;
+
+            //     if (start != -1) {
+            //         let getSubString = $(this).html().substring(start, end);
+
+            //         $(this).html($(this).html().replace(getSubString,"<span class = 'highlight'>"+getSubString+"</span>"));
+            //     }
+            // });
+            
+            
+        });
+
+        var flag = false;
+        var flag38 = false;
+        $('.input').on('keydown', function(e){
+           
+               
+                var $listItems = $('.item');
+                var key = e.keyCode,
+                $selected = $listItems.filter('.selected'),
+                $current;
+
+                if ( key != 40 && key != 38 ) return;
+                // console.log('here',c);
+                $listItems.removeClass('selected');
+                if ( key == 40 ) // Down key
+                {
+                    if ( ! $selected.length || $selected.is(':last-child') ) {
+                        if (flag) {
+                            $('.input').val(c);
+                            flag = false;
+                            flag38 = false;
+                        } else {
+                            console.log(3);
+                            $current = $listItems.eq(0);
+                            $('.input').val($current[0].innerText);
+                            $current.addClass('selected');
+                            flag38 = true;
+                        }
+                    }
+                    else {
+                        console.log(4)
+                        $current = $selected.next();
+                        $('.input').val($current[0].innerText);
+                        $current.addClass('selected');
+                        flag = true;
+                    }
+                }
+                else if ( key == 38 ) // Up key
+                {
+                    if ( ! $selected.length || $selected.is(':first-child') ) {
+                        if (flag38) {
+                            console.log('aaaaaaaaaaaaaaaaaaaa')
+                            $('.input').val(c);
+                            flag38 = false;
+                            flag = false;
+                        } else {
+                            console.log('1',$selected.length);
+                            $current = $listItems.last();
+                            $('.input').val($current[0].innerText);
+                            $current.addClass('selected');
+                            flag = true;
+                        }
+                    }
+                    else {
+                        console.log('2',$selected.length);
+                        $current = $selected.prev();
+                        $('.input').val($current[0].innerText);
+                        flag38 = true;
+                        $current.addClass('selected');
+                    }
+                }
+                // if (flag == false) {
+                    // $current.addClass('selected');
+                // }
+        });
+
+
+        function change_alias(alias) {
+            var str = alias;
+            str = str.toLowerCase();
+            str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g,"a"); 
+            str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g,"e"); 
+            str = str.replace(/ì|í|ị|ỉ|ĩ/g,"i"); 
+            str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g,"o"); 
+            str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g,"u"); 
+            str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g,"y"); 
+            str = str.replace(/đ/g,"d");
+            str = str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|\$|_|`|-|{|}|\||\\/g," ");
+            str = str.replace(/ + /g," ");
+            str = str.trim(); 
+            return str;
+        }
+
+        // highlight($('.item'), 'quán nhậu lão đại');
+        function highlight(classItem, valueSearch) {
+
+            classItem.each(function(item) {
+
+                let stringConvert = change_alias($(this).html());
+                let findString = valueSearch;
+
+                findString = change_alias(findString);
+
+                let start = stringConvert.indexOf(findString);
+                let end = start + findString.length;
+
+                if (start != -1) {
+                    let getSubString = $(this).html().substring(start, end);
+
+                    $(this).html($(this).html().replace(getSubString,"<span class = 'highlight'>"+getSubString+"</span>"));
+                }
+            });
+        }
+
+        var foo = "foo bar baz bat";
+        let string1 = 'bar baz';
+
+        // console.log('a',foo.indexOf("baz bat"));
+        // console.log('here', change_alias('Nhà Hàng'));
+    </script>
+</body>
+</html>

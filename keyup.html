@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" class="search" />
+
+    <div>
+        <button class="button" type="button">button</button>
+
+        <div id="demo">
+            
+        </div>
+    </div>
+
+    <script src="jquery.js"></script>
+    <script>
+
+        $('.button').on('click', function(){
+            $('#demo').html(
+                `
+                <div>
+                <p>bia tươi hà nội</p>
+                <p>địa chỉ: 25 lê đình lý</p>
+                <button class="button1" type="button">button</button>
+            </div>
+            <div>
+                <p>bia tươi hà nội</p>
+                <p>địa chỉ: 25 lê đình lý</p>
+                <button  class="button1" type="button">button</button>
+            </div>
+            <div>
+                <p>bia tươi hà nội</p>
+                <p>địa chỉ: 25 lê đình lý</p>
+                <button class="button1" type="button">button</button>
+            </div>
+                `
+            );
+        });
+
+        // $('.button1').on('click', function(){
+        //     console.log(1);
+        // });
+
+        // $(document).on('click', function(){
+        //     console.log(1111);
+        // });
+
+        $(document).on('click', '.button1', function(e){
+            console.log(e)
+            console.log(1);
+        });
+
+
+        // var newValue='';
+        // var old='';
+        // var _changeInterval = null;
+
+        // var previousValue = $('.search').val();
+
+        // $('.search1').on('keyup', function() {
+        //     var currentValue = $(this).val();
+        //     console.log(currentValue)
+
+        //     if(currentValue != previousValue) {
+        //         previousValue = currentValue;
+        //         console.log('aaaaaaaaaaaaaaaaaaaaaaaaaa');
+        //     }
+        // })
+
+        // $('.search').on('keyup', function(){
+        //         // wait untill user type in something
+        //         // Don't let call setInterval - clear it, user is still typing
+        //         // clearInterval(_changeInterval)
+        //         if($('.search').val() != '') {
+
+        //             newValue = $('.search').val();
+        //             if(newValue != old) {
+        //                 clearInterval(_changeInterval)
+        //                 console.log('aaaaaaaaaaa')
+        //                 _changeInterval = setInterval(function() {
+        //                     console.log('inside')
+        //                     console.log(newValue)
+        //                     // Typing finished, now you can Do whatever after 2 sec
+        //                     clearInterval(_changeInterval)
+        //                 }, 2000);
+        //                 old = newValue;
+        //             }
+        //         }
+        // });
+    </script>
+</body>
+</html>

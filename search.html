@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div>
+        <input type="text" class="search"/>
+
+        <div class="result">
+            
+        </div>
+    </div>
+
+
+    <script src="jquery.js"></script>
+
+    <script>
+
+
+
+
+        $('.search').on('keyup', function(){
+            console.log('aaaaaaaaaaaaaaaaaaaa');
+        });
+
+
+
+
+
+        var _changeInterval = null;
+        var result;
+        var newValue='';
+        var old='';
+        var temp = false;
+
+        function search() {
+            // alert(1);
+            temp = true;
+        }
+
+        $('.search').on('keyup', function() {
+            if(!temp) {
+                console.log('1');
+            }
+
+            $('.search').on('keyup', function() {
+                
+            })    
+        })
+
+        // $('.search').on('keyup', function(){
+        //         // wait untill user type in something
+        //         // Don't let call setInterval - clear it, user is still typing
+        //         clearInterval(_changeInterval)
+        //         if($('.search').val() != '') {
+        //             debugger
+
+        //             newValue = $('.search').val();
+
+        //             if(newValue !== old) {
+        //                 _changeInterval = setInterval(function() {
+        //                     console.log('aaaaaaaaaaaaaaaaaaaa');
+        //                 let html = `
+        //                         <div>
+        //                             <a href="">aaaaaaaaaaaaaa</a>
+        //                         </div>
+        //                         <div>
+        //                             <a href="">aaaaaaaaaaaaaa</a>
+        //                         </div>
+        //                         <div>
+        //                             <a href="">aaaaaaaaaaaaaa</a>
+        //                         </div>
+        //                         <div>
+        //                             <a href="">aaaaaaaaaaaaaa</a>
+        //                         </div>
+        //                 `;
+        //                 $('.result').html(html);
+        //                 // Typing finished, now you can Do whatever after 2 sec
+        //                 clearInterval(_changeInterval)
+        //             }, 2000);
+
+        //             old = newValue;
+
+        //             }
+        //         } else {
+        //             $('.result').html('');
+        //         }
+                
+        // });
+    </script>
+</body>
+</html>
